@@ -1,27 +1,29 @@
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
 }
 
-/* Container */
-.contact-container {
+/* 🌌 FULL PAGE */
+.contact-page {
   min-height: 100vh;
   padding: 50px 20px;
   text-align: center;
+
+  /* SAME AS HOME 🔥 */
+  background: linear-gradient(to right, #1d3557, #457b9d);
+  color: white;
 }
 
-.contact-container h1 {
-  color: #1e3a8a;
+.contact-page h1 {
   margin-bottom: 5px;
 }
 
 .subtitle {
-  color: #555;
   margin-bottom: 40px;
+  color: #ddd;
 }
 
-/* Layout */
+/* LAYOUT */
 .contact-content {
   display: flex;
   justify-content: center;
@@ -29,19 +31,20 @@ body {
   flex-wrap: wrap;
 }
 
-/* LEFT SIDE */
+/* LEFT CARD */
 .contact-info {
   background: white;
+  color: black;
   padding: 30px;
   border-radius: 20px;
   width: 300px;
   text-align: left;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 .contact-info h2 {
   margin-bottom: 15px;
-  color: #2563eb;
+  color: #1d3557;
 }
 
 .info-box p {
@@ -55,23 +58,24 @@ body {
   color: #666;
 }
 
-/* RIGHT SIDE */
+/* RIGHT CARD */
 .contact-form {
   background: white;
+  color: black;
   padding: 30px;
   border-radius: 20px;
   width: 320px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
 .contact-form h2 {
-  color: #2563eb;
+  color: #1d3557;
 }
 
-/* Inputs */
+/* INPUTS */
 .contact-form input,
 .contact-form textarea {
   padding: 12px;
@@ -81,7 +85,7 @@ body {
 }
 
 .contact-form textarea {
-  height: 90px;
+  height: 100px;
   resize: none;
 }
 
@@ -92,7 +96,7 @@ body {
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-/* Button */
+/* BUTTON */
 .contact-form button {
   margin-top: 10px;
   padding: 12px;
@@ -103,13 +107,14 @@ body {
   cursor: pointer;
   font-weight: 500;
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+  transition: 0.2s;
 }
 
 .contact-form button:hover {
   transform: translateY(-2px);
 }
 
-/* Mobile */
+/* MOBILE */
 @media (max-width: 768px) {
   .contact-content {
     flex-direction: column;

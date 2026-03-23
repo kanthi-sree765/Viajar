@@ -3,9 +3,8 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* Background */
 .home {
-  height: 100vh;
+  min-height: 100vh;
   background: linear-gradient(to right, #1d3557, #457b9d);
   color: white;
 }
@@ -30,26 +29,130 @@ body {
   padding: 8px 18px;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: 500;
 }
 
 /* Hero */
 .hero {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 10px;
+  position: relative;
 }
 
 .hero h1 {
   font-size: 40px;
-  margin-bottom: 10px;
 }
 
 .hero p {
   opacity: 0.9;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
-/* Search Card */
+/* 🚗 Animation */
+.animation-container {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  margin-bottom: 10px; 
+  margin-top: -10px;  
+  overflow: hidden;
+}
+
+.road {
+  position: absolute;
+  bottom: 60px;
+  width: 200%;
+  height: 6px;
+  background: repeating-linear-gradient(
+    to right,
+    white 0px,
+    white 40px,
+    transparent 40px,
+    transparent 80px
+  );
+  opacity: 0.4;
+  animation: roadMove 2s linear infinite;
+}
+
+@keyframes roadMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-80px); }
+}
+
+/* 🚗 Car Container */
+.car {
+  position: absolute;
+  bottom: 65px;
+  left: 20%;
+  width: 90px;
+  height: 50px;
+  animation: floatCar 2s ease-in-out infinite alternate;
+}
+
+/* 🔝 Car Roof */
+.car-top {
+  width: 45px;
+  height: 18px;
+  background: #ffffff;
+  border-radius: 10px 10px 0 0;
+  position: absolute;
+  top: 0;
+  left: 22px;
+}
+
+/* 🚗 Car Body */
+.car-body {
+  width: 90px;
+  height: 28px;
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 10px;
+}
+
+/* 🪟 Window */
+.car-top::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 10px;
+  background: #1d3557;
+  border-radius: 4px;
+  top: 3px;
+  left: 8px;
+}
+
+/* 🛞 Wheels */
+.wheel {
+  width: 16px;
+  height: 16px;
+  background: #111;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0;
+  animation: spin 0.5s linear infinite;
+}
+
+.front {
+  right: 10px;
+}
+
+.back {
+  left: 10px;
+}
+
+/* ✨ Wheel animation */
+@keyframes spin {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+/* 🚗 Floating motion */
+@keyframes floatCar {
+  from { transform: translateY(0); }
+  to { transform: translateY(-3px); }
+}
+
+/* Search */
 .search-card {
   background: white;
   color: black;
@@ -60,29 +163,63 @@ body {
   justify-content: center;
   align-items: center;
   width: fit-content;
+  margin-top: -20px;
   margin: auto;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.search-card input {
+.search-card input,
+.search-card select {
   padding: 12px;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  min-width: 160px;
+  border: 1px solid #ddd;
+  min-width: 150px;
 }
 
 .search-card button {
   padding: 12px 20px;
-  border: none;
   background: #1d3557;
   color: white;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
-  font-weight: 500;
 }
 
-.search-card button:hover {
-  background: #0b2545;
+/* Suggestions */
+.input-group {
+  position: relative;
+}
+
+.suggestion-box {
+  position: absolute;
+  top: 45px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+}
+
+.suggestion-item:hover {
+  background: #f5f7fa;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.suggestion-item p {
+  font-size: 11px;
+  color: #777;
+  margin: 0;
 }
 
 /* Mobile */
@@ -90,13 +227,5 @@ body {
   .search-card {
     flex-direction: column;
     width: 90%;
-  }
-
-  .navbar {
-    padding: 15px 20px;
-  }
-
-  .hero h1 {
-    font-size: 28px;
   }
 }

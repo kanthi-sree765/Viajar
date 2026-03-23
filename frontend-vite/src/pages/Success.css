@@ -1,32 +1,114 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* 🌌 BACKGROUND (MATCH HOME) */
 .success-page {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+  background: linear-gradient(to right, #1d3557, #457b9d);
 }
 
+/* CARD */
 .success-card {
   background: white;
   padding: 40px;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  width: 380px;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+
+  animation: pop 0.4s ease;
 }
 
+/* TITLE */
 .success-card h1 {
   color: #16a34a;
+  margin-bottom: 10px;
 }
 
+.subtitle {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* DETAILS */
 .trip-details {
   margin: 20px 0;
 }
 
-.success-card button {
-  padding: 12px 25px;
+.trip-details h3 {
+  color: #1d3557;
+}
+
+.route {
+  margin: 8px 0;
+  color: #333;
+}
+
+.date {
+  color: #666;
+}
+
+/* EXTRA INFO */
+.extra-info {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #444;
+}
+
+.extra-info p {
+  margin: 5px 0;
+}
+
+/* PRICE */
+.price {
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* 🔥 BUTTON */
+.actions {
+  margin-top: 20px;
+}
+
+.actions button {
+  padding: 12px 26px;
   border: none;
-  background: #2563eb;
-  color: white;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
+  font-weight: 500;
+  font-size: 15px;
+
+  background: linear-gradient(135deg, #2563eb, #1e3a8a);
+  color: white;
+
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+  transition: all 0.25s ease;
+}
+
+.actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.5);
+}
+
+.actions button:active {
+  transform: scale(0.96);
+}
+
+/* ✨ ENTRY ANIMATION */
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

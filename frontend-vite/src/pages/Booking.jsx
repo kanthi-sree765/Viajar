@@ -5,7 +5,7 @@ import "./Booking.css";
 const Booking = () => {
   const location = useLocation();
   const data = location.state;
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [form, setForm] = useState({
     name: "",
@@ -28,30 +28,75 @@ const Booking = () => {
     }
 
     navigate("/success", {
-    state: {
+      state: {
         ...data,
         car: data?.car,
-    },
+      },
     });
   };
 
+  // 💰 REALISTIC PRICING MODEL
+  const baseFare = Math.round(data?.car?.price * 0.6);
+  const distanceCharge = Math.round(data?.car?.price * 0.25);
+  const gst = Math.round(data?.car?.price * 0.15);
+
+  const includedKm = 300;
+  const extraPerKm = data?.car?.type === "Basic" ? 12 :
+                     data?.car?.type === "SUV" ? 15 : 18;
+
   return (
-    <div className="booking-container">
+    <div className="booking-page">
       <h1>Confirm Your Booking</h1>
 
       <div className="booking-content">
-        
-        {/* LEFT: SUMMARY */}
+
+        {/* LEFT: DETAILS */}
         <div className="summary-card">
+
           <h2>{data?.car?.type}</h2>
+
           <p className="route">
             {data?.from} → {data?.to}
           </p>
+
           <p className="date">{data?.date}</p>
 
-          <div className="price-box">
-            ₹{data?.car?.price}
+          {/* 🚗 CAR DETAILS */}
+          <div className="car-info">
+            <p>🚗 {data?.car?.seats} Seats</p>
+            <p>⚙️ {data?.car?.transmission}</p>
+            <p>👨‍✈️ Driver Included</p>
+            <p>📍 {includedKm} kms included</p>
+            <p>➕ Extra ₹{extraPerKm}/km after limit</p>
           </div>
+
+          {/* 💰 PRICE BREAKDOWN */}
+          <div className="price-box">
+
+            <div className="price-row">
+              <span>Base Fare</span>
+              <span>₹{baseFare}</span>
+            </div>
+
+            <div className="price-row">
+              <span>Distance Charges</span>
+              <span>₹{distanceCharge}</span>
+            </div>
+
+            <div className="price-row">
+              <span>GST (15%)</span>
+              <span>₹{gst}</span>
+            </div>
+
+            <hr />
+
+            <div className="price-total">
+              <span>Total Amount</span>
+              <span>₹{data?.car?.price}</span>
+            </div>
+
+          </div>
+
         </div>
 
         {/* RIGHT: FORM */}

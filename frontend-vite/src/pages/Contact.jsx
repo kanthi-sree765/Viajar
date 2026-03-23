@@ -16,17 +16,22 @@ const Contact = () => {
   };
 
   const handleSubmit = () => {
-    alert("Message sent ✅");
+    if (!form.name || !form.email || !form.message) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    alert("Message sent successfully ✅");
   };
 
   return (
-    <div className="contact-container">
+    <div className="contact-page">
       <h1>Get in Touch</h1>
       <p className="subtitle">We’d love to hear from you</p>
 
       <div className="contact-content">
 
-        {/* LEFT SIDE */}
+        {/* LEFT */}
         <div className="contact-info">
           <h2>Contact Information</h2>
 
@@ -41,7 +46,7 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT */}
         <div className="contact-form">
           <h2>Send Message</h2>
 

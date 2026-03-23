@@ -1,22 +1,12 @@
-body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
-}
-
-/* Container */
-.booking-container {
-  min-height: 100vh;
+.booking-page {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to right, #1d3557, #457b9d);
+  color: white;
   padding: 40px 20px;
   text-align: center;
 }
 
-.booking-container h1 {
-  margin-bottom: 30px;
-  color: #1e3a8a;
-}
-
-/* Layout */
 .booking-content {
   display: flex;
   justify-content: center;
@@ -24,17 +14,23 @@ body {
   flex-wrap: wrap;
 }
 
-/* Summary */
-.summary-card {
+/* CARD */
+.summary-card,
+.form-card {
   background: white;
+  color: black;
   padding: 30px;
   border-radius: 20px;
-  width: 260px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* LEFT */
+.summary-card {
+  width: 300px;
 }
 
 .summary-card h2 {
-  color: #2563eb;
+  color: #1d3557;
 }
 
 .route {
@@ -46,19 +42,41 @@ body {
   color: #666;
 }
 
-.price-box {
+/* 🚗 CAR INFO */
+.car-info {
   margin-top: 15px;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 14px;
+  text-align: left;
+  color: #333;
 }
 
-/* Form */
+.car-info p {
+  margin: 6px 0;
+}
+
+/* 💰 PRICE */
+.price-box {
+  margin-top: 15px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.price-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* FORM */
 .form-card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 300px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  width: 320px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -66,24 +84,22 @@ body {
 
 .form-card h3 {
   margin-bottom: 10px;
-  color: #1e3a8a;
+  color: #1d3557;
 }
 
-/* Inputs */
+/* INPUTS */
 .form-card input {
   padding: 12px;
   border-radius: 8px;
   border: 1px solid #ddd;
-  transition: 0.2s;
 }
 
 .form-card input:focus {
   border-color: #2563eb;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
-/* Button */
+/* BUTTON */
 .form-card button {
   margin-top: 10px;
   padding: 12px;
@@ -92,7 +108,6 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: 500;
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
 }
 
