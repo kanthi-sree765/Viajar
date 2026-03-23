@@ -1,0 +1,32 @@
+.success-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+}
+
+.success-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.success-card h1 {
+  color: #16a34a;
+}
+
+.trip-details {
+  margin: 20px 0;
+}
+
+.success-card button {
+  padding: 12px 25px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}

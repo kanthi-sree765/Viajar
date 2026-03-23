@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background */
+.home {
+  height: 100vh;
+  background: linear-gradient(to right, #1d3557, #457b9d);
+  color: white;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.contact-btn {
+  background: white;
+  color: #1d3557;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+/* Search Card */
+.search-card {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.search-card input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  min-width: 160px;
+}
+
+.search-card button {
+  padding: 12px 20px;
+  border: none;
+  background: #1d3557;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.search-card button:hover {
+  background: #0b2545;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .search-card {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .navbar {
+    padding: 15px 20px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+}
