@@ -1,11 +1,22 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Booking.css";
 
 const Booking = () => {
   const location = useLocation();
   const data = location.state;
   const navigate = useNavigate();
+
+  // 🔐 Protect (ONLY USER allowed)
+  useEffect(() => {
+    const session = JSON.parse(localStorage.getItem("session"));
+
+    if (!session || !session.isLoggedIn || session.user.role !== "user") {
+      navigate("/login", {
+        state: { from: "/booking", data: location.state },
+      });
+    }
+  }, []);
 
   const [form, setForm] = useState({
     name: "",
@@ -22,37 +33,63 @@ const Booking = () => {
   };
 
   const handleSubmit = () => {
+    const session = JSON.parse(localStorage.getItem("session"));
+
+    if (!session || !session.isLoggedIn || session.user.role !== "user") {
+      alert("Please login as user to book");
+      navigate("/login");
+      return;
+    }
+
     if (!form.name || !form.phone) {
       alert("Please fill all details");
       return;
     }
 
-    navigate("/success", {
-      state: {
-        ...data,
-        car: data?.car,
-      },
-    });
+// inside handleSubmit()
+
+const booking = {
+  id: Date.now(),
+  user: session.user,
+  car: data?.car,
+  from: data?.from,
+  to: data?.to,
+  date: data?.date,
+  amount: data?.car?.price,
+  status: "Pending",      // ✅ NEW
+  driver: null,           // ✅ NEW
+};
+
+const existingBookings =
+  JSON.parse(localStorage.getItem("bookings")) || [];
+
+existingBookings.push(booking);
+
+localStorage.setItem("bookings", JSON.stringify(existingBookings));
+
+navigate("/success", { state: booking });
   };
 
-  // 💰 REALISTIC PRICING MODEL
+  // 💰 Pricing
   const baseFare = Math.round(data?.car?.price * 0.6);
   const distanceCharge = Math.round(data?.car?.price * 0.25);
   const gst = Math.round(data?.car?.price * 0.15);
 
   const includedKm = 300;
-  const extraPerKm = data?.car?.type === "Basic" ? 12 :
-                     data?.car?.type === "SUV" ? 15 : 18;
+  const extraPerKm =
+    data?.car?.type === "Basic"
+      ? 12
+      : data?.car?.type === "SUV"
+      ? 15
+      : 18;
 
   return (
     <div className="booking-page">
       <h1>Confirm Your Booking</h1>
 
       <div className="booking-content">
-
-        {/* LEFT: DETAILS */}
+        {/* LEFT */}
         <div className="summary-card">
-
           <h2>{data?.car?.type}</h2>
 
           <p className="route">
@@ -61,7 +98,6 @@ const Booking = () => {
 
           <p className="date">{data?.date}</p>
 
-          {/* 🚗 CAR DETAILS */}
           <div className="car-info">
             <p>🚗 {data?.car?.seats} Seats</p>
             <p>⚙️ {data?.car?.transmission}</p>
@@ -70,9 +106,7 @@ const Booking = () => {
             <p>➕ Extra ₹{extraPerKm}/km after limit</p>
           </div>
 
-          {/* 💰 PRICE BREAKDOWN */}
           <div className="price-box">
-
             <div className="price-row">
               <span>Base Fare</span>
               <span>₹{baseFare}</span>
@@ -94,12 +128,10 @@ const Booking = () => {
               <span>Total Amount</span>
               <span>₹{data?.car?.price}</span>
             </div>
-
           </div>
-
         </div>
 
-        {/* RIGHT: FORM */}
+        {/* RIGHT */}
         <div className="form-card">
           <h3>Passenger Details</h3>
 
@@ -122,7 +154,6 @@ const Booking = () => {
           <input
             type="text"
             name="pickup"
-            placeholder="Pickup Location"
             value={form.pickup}
             onChange={handleChange}
           />
@@ -130,7 +161,6 @@ const Booking = () => {
           <input
             type="text"
             name="drop"
-            placeholder="Drop Location"
             value={form.drop}
             onChange={handleChange}
           />
@@ -139,7 +169,6 @@ const Booking = () => {
             Confirm Booking
           </button>
         </div>
-
       </div>
     </div>
   );

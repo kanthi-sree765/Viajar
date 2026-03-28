@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Background same as home */
+.auth-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #1d3557, #457b9d);
+}
+
+/* Card */
+.auth-card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+/* Title */
+.auth-card h1 {
+  margin-bottom: 5px;
+  color: #1d3557;
+}
+
+.auth-card p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: 0.2s;
+}
+
+.auth-card input:focus {
+  border-color: #457b9d;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(69, 123, 157, 0.2);
+}
+
+/* Button */
+.auth-card button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #1d3557, #457b9d);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-top: 10px;
+  box-shadow: 0 10px 25px rgba(29, 53, 87, 0.4);
+}
+
+.auth-card button:hover {
+  transform: translateY(-2px);
+}
+
+/* Switch */
+.switch {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #1d3557;
+  font-weight: 500;
+  text-decoration: none;
+}

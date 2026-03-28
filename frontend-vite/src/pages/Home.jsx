@@ -112,7 +112,7 @@ const Home = () => {
                 <div className="wheel front"></div>
                 <div className="wheel back"></div>
             </div>
-        </div>
+         </div>
 
         {/* Search Card */}
         <div className="search-card">
